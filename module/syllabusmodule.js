@@ -1,24 +1,24 @@
 const mongo = require("../connect");
 const {ObjectId}= require("mongodb");
 
-module.exports.getuser=async(req,res,next)=>{
+module.exports.getsyllabus=async(req,res,next)=>{
     try{
-        const getuser= await mongo.selectedDb
-        .collection("user")
+        const getsyllabus= await mongo.selectedDb
+        .collection("syllabus")
         .find().toArray();
-        res.send(getuser);
+        res.send(getsyllabus);
     }catch(err){
-        res.status(500).send(getuser);
+        res.status(500).send(getsyllabus);
 
     }
   
 };
 
-module.exports.updateuser=async(req,res,next)=>{
+module.exports.updatesyllabus=async(req,res,next)=>{
   try{
-    const id=req.params.userid;
+    const id=req.params.syllabusid;
   const updatedresponce=await mongo.selectedDb
-  .collection("user")
+  .collection("syllabus")
   .findOneAndUpdate({_id:ObjectId(id)},
   {$set:{...req.body}},
  { returnDocument:"after"});
@@ -30,10 +30,10 @@ module.exports.updateuser=async(req,res,next)=>{
    }
 };
 
-module.exports.createuser=async(req,res,next)=>{
+module.exports.createsyllabus=async(req,res,next)=>{
    try{
    const insertedresponse=await mongo.selectedDb
-   .collection("user")
+   .collection("syllabus")
    .insertOne(req.body);
    res.send(insertedresponse);
    }
@@ -43,11 +43,11 @@ module.exports.createuser=async(req,res,next)=>{
    }
 };
 
-module.exports.deleteuser=async(req,res,next)=>{
+module.exports.deletesyllabus=async(req,res,next)=>{
     try{
         const id=req.params.id;
         const deletedresponce=await mongo.selectedDb
-        .collection("user")
+        .collection("syllabus")
         .remove({_id:ObjectId(id)});
         res.send(deletedresponce);
     } catch(err){

@@ -1,24 +1,24 @@
 const mongo = require("../connect");
 const {ObjectId}= require("mongodb");
 
-module.exports.getuser=async(req,res,next)=>{
+module.exports.getcertificate=async(req,res,next)=>{
     try{
-        const getuser= await mongo.selectedDb
-        .collection("user")
+        const getcertificate= await mongo.selectedDb
+        .collection("certificate")
         .find().toArray();
-        res.send(getuser);
+        res.send(getcertificate);
     }catch(err){
-        res.status(500).send(getuser);
+        res.status(500).send(getcertificate);
 
     }
   
 };
 
-module.exports.updateuser=async(req,res,next)=>{
+module.exports.updatecertificate=async(req,res,next)=>{
   try{
-    const id=req.params.userid;
+    const id=req.params.certificateid;
   const updatedresponce=await mongo.selectedDb
-  .collection("user")
+  .collection("certificate")
   .findOneAndUpdate({_id:ObjectId(id)},
   {$set:{...req.body}},
  { returnDocument:"after"});
@@ -30,10 +30,10 @@ module.exports.updateuser=async(req,res,next)=>{
    }
 };
 
-module.exports.createuser=async(req,res,next)=>{
+module.exports.createcertificate=async(req,res,next)=>{
    try{
    const insertedresponse=await mongo.selectedDb
-   .collection("user")
+   .collection("certificate")
    .insertOne(req.body);
    res.send(insertedresponse);
    }
@@ -43,11 +43,11 @@ module.exports.createuser=async(req,res,next)=>{
    }
 };
 
-module.exports.deleteuser=async(req,res,next)=>{
+module.exports.deletecertificate=async(req,res,next)=>{
     try{
         const id=req.params.id;
         const deletedresponce=await mongo.selectedDb
-        .collection("user")
+        .collection("certificate")
         .remove({_id:ObjectId(id)});
         res.send(deletedresponce);
     } catch(err){
