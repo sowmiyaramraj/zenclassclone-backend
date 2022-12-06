@@ -17,7 +17,7 @@ exports.authenticateuser=(req,res,next)=>{
 };
 exports.authorizeuser=(req,res,next)=>{
     
-    if(req.body.currentuser.role==="admin"){
+    if(req.body.currentuser.role==="student"){
         next();
 
     }else{

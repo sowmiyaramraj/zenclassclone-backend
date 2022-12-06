@@ -5,10 +5,10 @@ const auth=require("../module/authmodule");
 
 router.get("/get",certificateModule.getcertificate);
 
-router.put("/update/:certificateid",auth.authorizeuser,certificateModule.updatecertificate);
+router.put("/update/:certificateid",certificateModule.updatecertificate);
 
-router.delete("/delete/:id",auth.authorizeuser,certificateModule.deletecertificate);
+router.delete("/delete/:id",certificateModule.deletecertificate);
 
-router.post("/create",auth.authorizeuser,certificateModule.createcertificate);
+router.post("/create",certificateModule.createcertificate);
 
 module.exports=router;

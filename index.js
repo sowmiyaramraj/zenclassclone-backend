@@ -3,6 +3,7 @@ const cors=require("cors");
 const dotenv=require("dotenv");
 const auth=require("./module/authmodule");
 const userRouter=require("./router/userrouter");
+const classRouter=require("./router/classrouter");
 const syllabusRouter=require("./router/syllabusrouter");
 const certificateRouter=require("./router/certificaterouter");
 const registerrouter=require("./router/registerrouter");
@@ -19,5 +20,6 @@ app.use("/",auth.authenticateuser);
 app.use("/user",userRouter);
 app.use("/syllabus",syllabusRouter);
 app.use("/certificate",certificateRouter);
+app.use("/class",classRouter);
 
 app.listen(process.env.PORT || 3001);

@@ -5,10 +5,10 @@ const auth=require("../module/authmodule");
 
 router.get("/get",syllabusModule.getsyllabus);
 
-router.put("/update/:syllabusid",auth.authorizeuser,syllabusModule.updatesyllabus);
+router.put("/update/:syllabusid",syllabusModule.updatesyllabus);
 
-router.delete("/delete/:id",auth.authorizeuser,syllabusModule.deletesyllabus);
+router.delete("/delete/:id",syllabusModule.deletesyllabus);
 
-router.post("/create",auth.authorizeuser,syllabusModule.createsyllabus);
+router.post("/create",syllabusModule.createsyllabus);
 
 module.exports=router;
