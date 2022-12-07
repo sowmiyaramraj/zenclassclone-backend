@@ -9,6 +9,7 @@ const certificateRouter=require("./router/certificaterouter");
 const requirementRouter=require("./router/requirementrouter");
 const registerrouter=require("./router/registerrouter");
 const profilerouter=require("./router/profilerouter");
+const taskRouter=require("./router/taskrouter");
 
 const mongo=require("./connect");
 const crypto = require('crypto');
@@ -27,5 +28,5 @@ app.use("/certificate",certificateRouter);
 app.use("/requirement",requirementRouter);
 app.use("/class",classRouter);
 app.use("/profile",profilerouter);
-
+app.use("/task",taskRouter);
 app.listen(process.env.PORT || 3001);
