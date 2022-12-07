@@ -8,6 +8,8 @@ const syllabusRouter=require("./router/syllabusrouter");
 const certificateRouter=require("./router/certificaterouter");
 const requirementRouter=require("./router/requirementrouter");
 const registerrouter=require("./router/registerrouter");
+const profilerouter=require("./router/profilerouter");
+
 const mongo=require("./connect");
 const crypto = require('crypto');
 dotenv.config();
@@ -24,5 +26,6 @@ app.use("/syllabus",syllabusRouter);
 app.use("/certificate",certificateRouter);
 app.use("/requirement",requirementRouter);
 app.use("/class",classRouter);
+app.use("/profile",profilerouter);
 
 app.listen(process.env.PORT || 3001);
