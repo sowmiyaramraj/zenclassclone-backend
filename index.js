@@ -6,8 +6,10 @@ const userRouter=require("./router/userrouter");
 const classRouter=require("./router/classrouter");
 const syllabusRouter=require("./router/syllabusrouter");
 const certificateRouter=require("./router/certificaterouter");
+const requirementrouter=require("./router/requirementrouter");
 const registerrouter=require("./router/registerrouter");
 const mongo=require("./connect");
+const crypto = require('crypto');
 dotenv.config();
 mongo.connect();
 const app=express();
@@ -20,6 +22,7 @@ app.use("/",auth.authenticateuser);
 app.use("/user",userRouter);
 app.use("/syllabus",syllabusRouter);
 app.use("/certificate",certificateRouter);
+app.use("/requirement",requirementRouter);
 app.use("/class",classRouter);
 
 app.listen(process.env.PORT || 3001);
